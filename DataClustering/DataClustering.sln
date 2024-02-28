@@ -1,0 +1,53 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34322.80
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataClustering", "DataClustering.csproj", "{77AB250C-FE23-4F6D-8B6E-15A1B8C4C4C9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataClustering.Android", "..\DataClustering.Android\DataClustering.Android.csproj", "{BE59BBCC-FCC2-4984-A2AE-7D735718BF58}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataClustering.Desktop", "..\DataClustering.Desktop\DataClustering.Desktop.csproj", "{900A3D3B-91BB-49F3-9373-B7E6F6B7586F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataClustering.iOS", "..\DataClustering.iOS\DataClustering.iOS.csproj", "{63DD571E-9A98-46A9-B667-9A730C9631FB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataClustering.Algorithms", "..\DataClustering.Algorithms\DataClustering.Algorithms.csproj", "{A7D1235D-343D-444E-94A8-1AE9DCE43BB6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{77AB250C-FE23-4F6D-8B6E-15A1B8C4C4C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77AB250C-FE23-4F6D-8B6E-15A1B8C4C4C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77AB250C-FE23-4F6D-8B6E-15A1B8C4C4C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77AB250C-FE23-4F6D-8B6E-15A1B8C4C4C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE59BBCC-FCC2-4984-A2AE-7D735718BF58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE59BBCC-FCC2-4984-A2AE-7D735718BF58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE59BBCC-FCC2-4984-A2AE-7D735718BF58}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{BE59BBCC-FCC2-4984-A2AE-7D735718BF58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE59BBCC-FCC2-4984-A2AE-7D735718BF58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE59BBCC-FCC2-4984-A2AE-7D735718BF58}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{900A3D3B-91BB-49F3-9373-B7E6F6B7586F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{900A3D3B-91BB-49F3-9373-B7E6F6B7586F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{900A3D3B-91BB-49F3-9373-B7E6F6B7586F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{900A3D3B-91BB-49F3-9373-B7E6F6B7586F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63DD571E-9A98-46A9-B667-9A730C9631FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63DD571E-9A98-46A9-B667-9A730C9631FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63DD571E-9A98-46A9-B667-9A730C9631FB}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{63DD571E-9A98-46A9-B667-9A730C9631FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63DD571E-9A98-46A9-B667-9A730C9631FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63DD571E-9A98-46A9-B667-9A730C9631FB}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{A7D1235D-343D-444E-94A8-1AE9DCE43BB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7D1235D-343D-444E-94A8-1AE9DCE43BB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7D1235D-343D-444E-94A8-1AE9DCE43BB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7D1235D-343D-444E-94A8-1AE9DCE43BB6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6D1C51AC-19FB-4DE1-A55B-6E363D10B9F5}
+	EndGlobalSection
+EndGlobal
