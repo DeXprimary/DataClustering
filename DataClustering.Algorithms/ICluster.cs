@@ -8,7 +8,7 @@ namespace DataClustering.Algorithms;
 
 public interface ICluster<T>
 {
-    public T Centroid { get; }
-    public IList<T> Components { get; }
+    public IMeasurable<T> Centroid { get; }
+    public IList<IMeasurable<T>> Components { get; }
     public double UpdateCentroid();
 }

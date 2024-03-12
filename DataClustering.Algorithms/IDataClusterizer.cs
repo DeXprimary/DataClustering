@@ -11,6 +11,5 @@ public interface IDataClusterizer<T, K>
     where K : ICluster<T>
 {
     public ICluster<T>[] Clusters { get; }
-    public void Initialize(IList<T> data);
-    public void Compute(IList<T> data);
+    public void Compute(IList<IMeasurable<T>> data);
 }

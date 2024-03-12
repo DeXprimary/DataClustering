@@ -1,39 +1,46 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace DataClustering.Algorithms.KMeans;
 
-internal class DataClusterizer<T, K> : IDataClusterizer<T, K>
+public class DataClusterizer<T, K> : IDataClusterizer<T, K>
     where K : ICluster<T>
+    where T : INumber<T>, IDivisionOperators<T, int, T>
 {
     private const int _maxIterations = 100;
     private const int _minMovability = 1;
 
-    private IList<T> _data;
-    private Func<T, T, double> _funcComparison;
+    private IList<IMeasurable<T>> _data;
     private ICluster<T>[] _clusters;
     public ICluster<T>[] Clusters => _clusters;
 
-    DataClusterizer(T[] data, ICluster<T>[] defaultClusters, Func<T, T, double> funcComparison)
+    public DataClusterizer(IList<IMeasurable<T>> data, int defaultClustersCount)
     {
         _data = data;
-        _funcComparison = funcComparison;
-        _clusters = defaultClusters;
-        Initialize(data);
+        _clusters = GetRandomCentroids(data, defaultClustersCount);
     }
 
-    public void Initialize(IList<T> data)
+    public DataClusterizer(IList<IMeasurable<T>> data, ICluster<T>[] defaultClusters) : this(data, defaultClusters.Length)
     {
-        for (int k = 0; k < data.Count; k++)
-        {
-            GetClosestCluster(data[k]).Components.Add(data[k]);
-        }
+        _clusters = defaultClusters;
     }
 
-    public void Compute(IList<T> data)
+    private ICluster<T>[] GetRandomCentroids(IList<IMeasurable<T>> data, int count)
+    {
+        if (data.Count < count) throw new ArgumentException("The number of data elements is less than the number of clusters.");
+        var random = new Random();
+        return data
+            .OrderBy(_ => random.Next())
+            .Take(count)
+            .Select(item => new Cluster<T>(item))
+            .ToArray();
+    }
+
+    public void Compute(IList<IMeasurable<T>> data)
     {
         for (int k = 0; k < _maxIterations; k++)
         {
@@ -60,10 +67,10 @@ internal class DataClusterizer<T, K> : IDataClusterizer<T, K>
         }
     }
 
-    private ICluster<T> GetClosestCluster(T unitData)
+    private ICluster<T> GetClosestCluster(IMeasurable<T> unitData)
     {
         return _clusters
-            .Select(item => new { measure = _funcComparison(item.Centroid, unitData), cluster = item })
+            .Select(item => new { measure = unitData.Measure(item), cluster = item })
             .MinBy(item => item.measure)
             !.cluster;
     }

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DataClustering.Algorithms.KMeans;
 
-internal class DataVector<T>
+public class DataVector<T> : IMeasurable<T>
     where T : INumber<T>, IDivisionOperators<T, int, T>
 {
     private T[] _values;
@@ -19,6 +19,16 @@ internal class DataVector<T>
     public DataVector(T[] values)
     {
         _values = values;
+    }
+
+    public DataVector(DataVector<T> vector)
+    {
+        _values = vector._values;
+    }
+
+    public T Measure(ICluster<T> cluster)
+    {
+        return (this - (DataVector<T>)(cluster.Centroid)).Values.Aggregate((sum, num) => ((num * num) + sum));
     }
 
     public static DataVector<T> GetZero(int dimension)
@@ -39,6 +49,14 @@ internal class DataVector<T>
         var numberArray = new T[a._values.Length];
         for (int k = 0; k < a._values.Length; k++)
             numberArray[k] = a._values[k] - b._values[k];
+        return new DataVector<T>(numberArray);
+    }
+
+    public static DataVector<T> operator *(DataVector<T> a, DataVector<T> b)
+    {
+        var numberArray = new T[a._values.Length];
+        for (int k = 0; k < a._values.Length; k++)
+            numberArray[k] = a._values[k] * b._values[k];
         return new DataVector<T>(numberArray);
     }
 

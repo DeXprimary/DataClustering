@@ -9,36 +9,33 @@ using System.Threading.Tasks;
 
 namespace DataClustering.Algorithms.KMeans;
 
-internal class Cluster<TVector, KNumber> : ICluster<TVector>
-    where TVector : DataVector<KNumber>
-    where KNumber : INumber<KNumber>, IDivisionOperators<KNumber, int, KNumber>
+public class Cluster<T> : ICluster<T>
+    where T : INumber<T>, IDivisionOperators<T, int, T>
 {
-    private TVector _lastCentroid;
-    private TVector _centroid;
-    public TVector Centroid => _centroid;
+    private IMeasurable<T> _lastCentroid;
+    private IMeasurable<T> _centroid;
+    public IMeasurable<T> Centroid => _centroid;
 
-    private IList<TVector> _components = new List<TVector>();
-    public IList<TVector> Components => _components;
+    private IList<IMeasurable<T>> _components = new List<IMeasurable<T>>();
+    public IList<IMeasurable<T>> Components => _components;
 
-    Cluster(TVector defaultCentroid)
+    public Cluster(IMeasurable<T> defaultCentroid)
     {
         _centroid = defaultCentroid;
         _lastCentroid = defaultCentroid;
     }
 
-    public double GetDistanceSq(TVector a, TVector b)
+    public double GetDistanceSq(DataVector<T> a, DataVector<T> b)
     {
-        return a.Values
-            .Select((item, index) => Convert.ToDouble((b.Values[index] - a.Values[index]) * (b.Values[index] - a.Values[index])))
-            .Aggregate((sum, item) => sum + item);
+        return Convert.ToDouble((a - b).Values.Aggregate((sum, num) => ((num * num) + sum)));
     }
 
     public double UpdateCentroid()
     {
         _lastCentroid = _centroid;
-        var zeroVector = DataVector<KNumber>.GetZero(_centroid.Values.Length);
-        _centroid = (TVector)Components.Aggregate(zeroVector, (sum, item) => sum + item, sum => sum / zeroVector.Values.Length);
+        var zeroVector = DataVector<T>.GetZero(_centroid.Values.Length);
+        _centroid = Components.Aggregate(zeroVector, (sum, item) => sum + (DataVector<T>)item, sum => sum / zeroVector.Values.Length);
 
-        return GetDistanceSq(_centroid, _lastCentroid);
+        return GetDistanceSq((DataVector<T>)_centroid, (DataVector<T>)_lastCentroid);
     }
 }
