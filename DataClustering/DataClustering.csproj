@@ -20,4 +20,11 @@
     <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="$(AvaloniaVersion)" />
     <PackageReference Include="Microsoft.ML" Version="3.0.1" />
   </ItemGroup>
+
+  <ItemGroup>
+	<ProjectReference Include="..\DataClustering.Algorithms\DataClustering.Algorithms.csproj" />
+	<Compile Update="Views\FileSelectorView.axaml.cs">
+      <DependentUpon>FileSelectorView.axaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
 </Project>

@@ -8,5 +8,11 @@
         x:Class="DataClustering.Views.MainWindow"
         Icon="/Assets/avalonia-logo.ico"
         Title="DataClustering">
-        <views:MainView />
+        
+
+	<StackPanel x:Name="StackPanel2">
+		<views:FileSelectorView />
+		<views:MainView />
+	</StackPanel>
+	
 </Window>

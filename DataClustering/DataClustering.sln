@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataClustering.Desktop", ".
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataClustering.iOS", "..\DataClustering.iOS\DataClustering.iOS.csproj", "{63DD571E-9A98-46A9-B667-9A730C9631FB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataClustering.Algorithms", "..\DataClustering.Algorithms\DataClustering.Algorithms.csproj", "{A7D1235D-343D-444E-94A8-1AE9DCE43BB6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataClustering.Algorithms", "..\DataClustering.Algorithms\DataClustering.Algorithms.csproj", "{A7D1235D-343D-444E-94A8-1AE9DCE43BB6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
